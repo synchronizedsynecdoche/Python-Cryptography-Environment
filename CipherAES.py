@@ -27,7 +27,6 @@ class CryptoRoutine(object):
     def staging(self, key, xmode, iv, nonceVal):
 
         self.KEY = str.encode(key)
-
         xmode = xmode.upper
 
         if xmode == "CBC":
@@ -38,14 +37,12 @@ class CryptoRoutine(object):
         elif xmode == "CTR":
 
             self.nonce = nonceVal
-
             self.cipherMode = modes.CTR(self.nonce)
 
         # OFB does not require Padding
         elif xmode == "OFB":
 
             self.initVector = iv
-
             self.cipherMode = modes.OFB(self.initVector)
 
         elif xmode == "CFB":
@@ -54,83 +51,69 @@ class CryptoRoutine(object):
 
         elif xmode == "GCM":
 
-            print "Coming soon!"
+            print("Coming soon!")
             exit(0)
 
         else:
 
-            print "Invalid mode \"{}\"".format(xmode)
+            print("Invalid mode \"{}\"".format(xmode))
             exit(1)
 
     def Encrypt(self, message):
 
+        messageBytes = str.encode(message)
+
         if self.choice == "AES":
-            messageBytes = str.encode(message)
         
             cipherInstance = Cipher(algorithms.AES(self.KEY),self.mode, backend=self.backend)
-
             cryptorInstance = cipherInstance.encryptor()
-
             ciphertext = cryptorInstance.update(messageBytes) + cryptorInstance.finalize()
-            print ciphertext
+
             return ciphertext
 
         if self.choice == "CAMELLIA":
-            messageBytes = str.encode(message)
 
             cipherInstance = Cipher(algorithms.Camellia(self.KEY), self.mode, backend=self.backend)
-
             cryptorInstance = cipherInstance.encryptor()
-
             ciphertext = cryptorInstance.update(messageBytes) + cryptorInstance.finalize()
-            print ciphertext
+
             return ciphertext
 
         if "DES" in self.choice:
-            messageBytes = str.encode(message)
 
             cipherInstance = Cipher(algorithms.TripleDES(self.KEY), self.mode, backend=self.backend)
-
             cryptorInstance = cipherInstance.encryptor()
-
             ciphertext = cryptorInstance.update(messageBytes) + cryptorInstance.finalize()
-            print ciphertext
+
             return ciphertext
                         # are keys needed? they;re global and set using the staging func
 
-    def Decrypt(self, ciphertextBytes):
+    def Decrypt(self, ciphertext):
+
+        messageBytes = str.encode(ciphertext)
 
         if self.choice == "AES":
-            messageBytes = str.encode(message)
 
             cipherInstance = Cipher(algorithms.AES(self.KEY), self.mode, backend=self.backend)
-
             cryptorInstance = cipherInstance.decryptor()
-
             plaintext = cryptorInstance.update(messageBytes) + cryptorInstance.finalize()
-            print plaintext
+
             return plaintext
 
         if self.choice == "CAMELLIA":
-            messageBytes = str.encode(message)
 
             cipherInstance = Cipher(algorithms.Camellia(self.KEY), self.mode, backend=self.backend)
-
             cryptorInstance = cipherInstance.decryptor()
-
             plaintext = cryptorInstance.update(messageBytes) + cryptorInstance.finalize()
-            print plaintext
+
             return plaintext
 
         if "DES" in self.choice:
-            messageBytes = str.encode(message)
 
             cipherInstance = Cipher(algorithms.TripleDES(self.KEY), self.mode, backend=self.backend)
-
             cryptorInstance = cipherInstance.decryptor()
-
             plaintext = cryptorInstance.update(messageBytes) + cryptorInstance.finalize()
-            print plaintext
+
             return plaintext
 
 

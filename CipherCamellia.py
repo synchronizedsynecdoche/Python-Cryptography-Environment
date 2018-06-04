@@ -8,8 +8,9 @@ class CamelliaRoutine(object):
 
     backend = default_backend()
     # retrieve needed variables
-    #unused variables can safely be set to None
-    #checking that these variables are correct size will happen elsewhere
+    # unused variables can safely be set to None
+    # checking that these variables are correct size will happen elsewhere
+    
     def staging(self, key, mode, iv, nonceVal):
 
         global cipherMode
@@ -21,58 +22,53 @@ class CamelliaRoutine(object):
 
         CAMELLIAKEY = str.encode(key)
 
-        CipherModeNotChecked = mode
 
-        if CipherModeNotCheked.Upper == "CBC":
+        if mode.upper == "CBC":
 
             initVector = iv
             cipherMode = modes.CBC(initVector)
 
-        elif CipherModeNotChecked.Upper == "CTR":
+        elif mode.upper == "CTR":
 
             nonce = nonceVal
             cipherMode = modes.CTR(nonce)
 
         # OFB does not require Padding
-        elif CipherModeNotChecked.Upper == "OFB":
+        elif mode.upper == "OFB":
 
             initVector = iv
             cipherMode = modes.OFB(initVector)
 
-        elif CipherModeNotChecked.Upper == "CFB":
+        elif mode.upper == "CFB":
 
             cipherMode = modes.CFB
 
-        elif CipherModeNotChecked.Upper == "GCM":
+        elif mode.upper == "GCM":
 
-            print "Coming soon!"
+            print("Coming soon!")
             exit(0)
 
         else:
 
-            print "Invalid mode"
+            print("Invalid mode")
             exit(1)
 
     def EncryptionRoutine(self, message):
 
         messageBytes = str.encode(message)
         
-        cipherInstance = Cipher(algorithms.Camellia(CAMELLIAKEY),cipherMode, backend = backend)
-
+        cipherInstance = Cipher(algorithms.Camellia(CAMELLIAKEY),cipherMode, backend=self.backend)
         cryptorInstance = cipherInstance.encryptor()
-
-                                            #this is weird
         ciphertext = cryptorInstance.update(messageBytes) + cryptorInstance.finalize()
 
         return ciphertext
 
-    def DecryptionRoutine(self, ciphertextBytes):
-        
-         
-         cipherInstance = Cipher(algorithms.Camellia(CAMELLIAKEY),cipherMode, backend = backend)
+    def DecryptionRoutine(self, ciphertext):
 
+         ciphertextBytes = str.encode(ciphertext
+                                     )
+         cipherInstance = Cipher(algorithms.Camellia(CAMELLIAKEY),cipherMode, backend=self.backend)
          decryptorInstance = cipherInstance.decryptor()
-
          plaintext = decryptorInstance.update(ciphertextBytes) + decryptorInstance.finalize()
 
          return plaintext
