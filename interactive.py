@@ -1,10 +1,3 @@
-# Input Handler
-
-# tests
-
-#Freenode
-#make a password to enable this
-fun = False
 
 class InputHandler(object):
     
@@ -19,21 +12,21 @@ class InputHandler(object):
         if cipher == "AES":
             
             import CipherAES
-            cipherObj = AESRoutine()
+            cipherObj = CipherAES.AESRoutine()
             
             return cipherObj
             
         elif cipher == "CAMELLIA":
             
             import CipherCamellia
-            cipherObj = CamelliaRoutine()
+            cipherObj = CipherCamellia.CamelliaRoutine()
             
             return cipherObj
         
         elif cipher == "TRIPLEDES" or cipher == "DESX3":
             
             import CipherTripleDES
-            cipherObj = TripleDESRoutine()
+            cipherObj = CipherTripleDES.TripleDESRoutine()
             
             return cipherObj
         

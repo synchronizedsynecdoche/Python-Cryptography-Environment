@@ -15,7 +15,6 @@ class Monitor(object):
                   "instruction set for optimization on newer hardware, yielding" \
                   "excellent performance even on low end hardware"
 
-        elif whichOne == "Camellia":
 
     def Considerations(self):
 

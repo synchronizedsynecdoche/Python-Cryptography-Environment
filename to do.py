@@ -5,7 +5,7 @@
 #   have ciphertype so only one file
 #    must be a multiple of 16 unless stream cryptography has padding class
 # Use bytes
-from SE:
+#from SE:
 my_str = "hello world"
 bytes = str.encode(my_str)
 type(bytes) # ensures its bytes
