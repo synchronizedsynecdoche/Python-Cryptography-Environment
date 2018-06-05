@@ -1,5 +1,4 @@
-#add this somewhere 
-                    #if fun: print "Dude weed lmao"
+
 
 class Monitor(object):
 
@@ -16,7 +15,7 @@ class Monitor(object):
                   "instruction set for optimization on newer hardware, yielding" \
                   "excellent performance even on low end hardware"
 
-        elif whichOne = "Camellia":
+        elif whichOne == "Camellia":
 
     def Considerations(self):
 

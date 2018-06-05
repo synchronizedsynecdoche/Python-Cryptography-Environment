@@ -99,8 +99,7 @@ class InputHandler(object):
 
                 
                 #have I made the pbkdf module yet???
-                
-                if userInputUpper == 
+
                 
                 
                

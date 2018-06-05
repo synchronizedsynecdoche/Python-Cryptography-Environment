@@ -10,7 +10,7 @@ class CamelliaRoutine(object):
     # retrieve needed variables
     # unused variables can safely be set to None
     # checking that these variables are correct size will happen elsewhere
-    
+
     def staging(self, key, mode, iv, nonceVal):
 
         global cipherMode

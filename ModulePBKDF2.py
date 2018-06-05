@@ -1,5 +1,14 @@
 # implement constant time functions for key verification!
 # must define insecOK prior to calling
+import os
+from cryptography.hazmat.backends import default_backend
+
+from cryptography.hazmat.primitives import hashes
+
+from pbkdf2 import PBKDF2
+
+backend = default_backend()
+
 class KDF:
     
     def PBKCheck(self):
@@ -16,9 +25,9 @@ class KDF:
 
             # make the abscence of PBKDF2 run the script in SHA256 mode (!less secure!)
 
-            print "You do not have PKDF2 required for secure password derivation\nUse less secure SHA256 derivation mode?\n"
+            print("You do not have PKDF2 required for secure password derivation\nUse less secure SHA256 derivation mode?\n")
 
-            insecOK = raw_input(">>>")
+            insecOK = input(">>>")
             insecOK = insecOK.upper()
 
             if insecOK[0] == "Y":
@@ -33,23 +42,23 @@ class KDF:
             
             import HashSHA
             
-            print "SHA256 key derivation enabled"
+            print("SHA256 key derivation enabled")
             
-            key = str.encode(raw_input(" enter a key >"))
+            key = str.encode(input(" enter a key >"))
             
             shaObj = HashSHA.sha256(key)
-            
+
             return shaObj
        
        else:
-            print "No usable key deviation function found\nyou must use random keys"
+            print("No usable key deviation function found\nyou must use random keys")
     
 
     def random(self, size):
         
         if size != 16 and size != 24 and size !=32:
             
-            print "invalid key size"    
+            print("invalid key size")
             
             return 1
         
@@ -60,12 +69,13 @@ class KDF:
 
         if iterations < 100000:
 
-            print "unsafe iteration count"
+            print("unsafe iteration count")
             os.exit(1)
 
         pbkdfSalt = os.urandom(16)
         backend = default_backend()
-        pbkdfObj = PBKDF2HMAC(algorithm=hashes.SHA512(), length=32, salt=pbkdfsalt, iterations=iterations, backend=backend)
+        # fix this, use a different module
+        pbkdfObj = PBKDF2HMAC(algorithm=hashes.SHA512(), length=32, salt=pbkdfSalt, iterations=iterations, backend=backend)
 
         suppliedPhraseBytes = str.encode(suppliedPhrase)
 

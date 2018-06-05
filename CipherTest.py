@@ -13,12 +13,10 @@ def EncryptionRoutine(message):
     
     messageBytes = str.encode(message)
     
-    cipherInstance = Cipher(algorithms.AES(random),mode, backend = backend)
-
+    cipherInstance = Cipher(algorithms.AES(random),mode, backend=backend)
     cryptorInstance = cipherInstance.encryptor()
-    
     ciphertext = cryptorInstance.update(messageBytes) + cryptorInstance.finalize()
-    print ciphertext
+
     return ciphertext
     
 def DecryptionRoutine(x):
@@ -27,7 +25,7 @@ def DecryptionRoutine(x):
     cipherInstance = Cipher(algorithms.AES(random),mode, backend = backend)
     decryptorInstance = cipherInstance.decryptor()
     plaintext = decryptorInstance.update(x) + decryptorInstance.finalize()
-    print plaintext
+
     return plaintext
 
 

@@ -1,19 +1,17 @@
 
-
+import argparse
 
 class kwargParse(object):
 
-	import argparse
 
-	define argspawn(self):
-		
-		global p
+	def argspawn(self):
 
-		p = argparse.ArgumentParser()
+        global p
+        p = argparse.ArgumentParser()
 	
 		p.add_argument('-c','--cipher', type=str, nargs='+', help="Cipher argument")
 		p.add_argument('-l','--key-length',type=int,nargs='+',help="Choose a key length [128,192,256]")
-		p.add_argument('-r','--use-dev-random',help="Force /dev/random as the entropy pool")
+        p.add_argument('-r','--use-dev-random',help="Force /dev/random as the entropy pool")
 		p.add_argument('-u','--use-dev-urandom',help="Force /dev/urandom as the entropy pool")
 		p.add_argument('-m','--mode-of-operation',type=str,nargs='+',help="Specify mode of operation")
 		p.add_argument('-v','--verbose',help="Be verbose")
@@ -27,8 +25,7 @@ class kwargParse(object):
 		p.add_argument('-i','--interactive',help="Drops to an interacive shell-like environment")
 		p.add_argument('-h','--help',help="Print this message")
 		p.add_argument('-k','--key',help="Pass the key as an argument, mainly for debugging purposes, and not safe")
-		
-		global a 
+
 
 		a = p.parse_args()
 
