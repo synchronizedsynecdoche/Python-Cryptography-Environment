@@ -1,6 +1,6 @@
 
 class InputHandler(object):
-    
+
     def TalkBack(self):
         while True:
         
@@ -38,47 +38,45 @@ class InputHandler(object):
               "prior to using the Python Cryptography Environment"
         while True:
         
-            userInput = raw_input("PCE ~ > ") 
-            userInputUpper = userInput.Upper()
+            userInput = raw_input("PCE ~ > ").upper()
 
+"""
             if "considerations":
 
-            # turn all of this crap into a function
-            if "help" in userInputUpper:
+           # if "help" in userInput:
                 
-                if "mode" in userInputUpper:
+                if "mode" in userInput:
                     
-                    if "CBC" in userInputUpper:
+                    if "CBC" in userInput:
                         
                 
-                elif "cipher" in userInputUpper:
+                elif "cipher" in userInput:
                     
-                    if "AES" in userInputUpper:
+                    if "AES" in userInput:
 
 
-                    if "CAMELLIA" in userInputUpper:
+                    if "CAMELLIA" in userInput:
 
 
-                    if "DES" in userInputUpper:
+                    if "DES" in userInput:
                     
                     else:
                         
                        print "That is unknown even to me"
                 
-                elif "HASH" in userInputUpper:
+                elif "HASH" in userInput:
                 
                         
-                    if "SHA" in userInputUpper:
+                    if "SHA" in userInput:
                         
                     
-                    if "WHIRLPOOL" in userInputUpper:
+                    if "WHIRLPOOL" in userInput:
                     
                     
-                    if "MD5" in userInputUpper:
-                     #maybe demonstrate a collision!
+                    if "MD5" in userInput:
 
             
-            if "AES" in userInputUpper and "help" not in userInputUpper:
+            if "AES" in userInput and "help" not in userInput:
                 
                 self.CipherSpawner("AES")
                 
@@ -87,15 +85,12 @@ class InputHandler(object):
                 #def staging(self, key, mode, iv, nonceVal)
                 
                 # do that thing where it sys.std.out.flush thing
-                userKey =raw_input("PCE AES/KEY > ")
-                userKeyBytes = str.encode(userKey)
+                userKey =raw_input("PCE AES/KEY > ").encode(userKey)
 
-                
-                #have I made the pbkdf module yet???
 
                 
                 
-               
+"""
                 
 testObj = InputHandler()
 testObj.Listener()            

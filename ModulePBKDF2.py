@@ -5,6 +5,8 @@ from cryptography.hazmat.backends import default_backend
 
 from cryptography.hazmat.primitives import hashes
 
+
+
 from pbkdf2 import PBKDF2
 
 backend = default_backend()
@@ -74,6 +76,7 @@ class KDF:
 
         pbkdfSalt = os.urandom(16)
         backend = default_backend()
+
         # fix this, use a different module
         pbkdfObj = PBKDF2HMAC(algorithm=hashes.SHA512(), length=32, salt=pbkdfSalt, iterations=iterations, backend=backend)
 
